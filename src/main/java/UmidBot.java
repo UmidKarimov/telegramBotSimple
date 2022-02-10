@@ -5,9 +5,12 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Properties;
 
 public class UmidBot extends TelegramLongPollingBot {
 
@@ -19,7 +22,13 @@ public class UmidBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return "5168171028:AAHkn6NFytOCEhXGSKb8UCPhcEh6DKCnhdk";
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileInputStream("C:\\Users\\Umidk\\IdeaProjects\\telegramBot\\src\\main\\resources\\config.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return properties.getProperty("token");
     }
 
     @Override
