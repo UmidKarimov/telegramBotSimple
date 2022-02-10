@@ -1,3 +1,5 @@
+package bot.sample;
+
 import org.telegram.telegrambots.api.methods.send.SendMediaGroup;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.User;
