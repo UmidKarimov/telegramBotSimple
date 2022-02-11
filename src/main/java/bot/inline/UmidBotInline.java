@@ -3,8 +3,10 @@ package bot.inline;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.CallbackQuery;
+import com.pengrad.telegrambot.model.InlineQuery;
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
+import com.pengrad.telegrambot.model.request.InlineQueryResultArticle;
 import com.pengrad.telegrambot.request.BaseRequest;
 import com.pengrad.telegrambot.request.SendMessage;
 
@@ -18,7 +20,7 @@ public class UmidBotInline {
     private String getToken() {
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream("C:\\Users\\Umidk\\IdeaProjects\\telegramBot\\src\\main\\resources\\config.properties"));
+            properties.load(new FileInputStream("C:\\Users\\umidk\\IdeaProjects\\telegramBotSimple\\src\\main\\resources\\config.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -38,9 +40,13 @@ public class UmidBotInline {
     private void process(Update update) {
         Message message = update.message();
         CallbackQuery callbackQuery = update.callbackQuery();
+        InlineQuery inlineQuery = update.inlineQuery();
         BaseRequest request = null;
 
-        if (message != null){
+        if (inlineQuery != null){
+            InlineQueryResultArticle pipka = new InlineQueryResultArticle("pipka","Pipka","Ready for work!");
+        }
+        else if (message != null){
             long chatId = message.chat().id();
             request = new SendMessage(chatId, "Hello!");
         }
@@ -48,5 +54,7 @@ public class UmidBotInline {
         if (request != null){
             bot.execute(request);
         }
+
+
     }
 }

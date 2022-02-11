@@ -26,7 +26,7 @@ public class UmidBot extends TelegramLongPollingBot {
     public String getBotToken() {
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream("C:\\Users\\Umidk\\IdeaProjects\\telegramBot\\src\\main\\resources\\config.properties"));
+            properties.load(new FileInputStream("C:\\Users\\umidk\\IdeaProjects\\telegramBotSimple\\src\\main\\resources\\config.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
